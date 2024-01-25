@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+ 
+<style>
+        *{
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+       
+        body{
+            background-color: rgb(240, 242, 245);
+        }
+        section{
+            width: 80%;
+            margin: auto;
+            margin-top: 130px;
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+        }
+        h1{
+            color: blue;
+            font-weight: 700;
+            font-size: 64px;
+            font-family: sans-serif;
+        }
+        p{
+            font-size:24px;
+            color: black;
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+        .second{
+            text-align: center;
+            width: 40%;
+            background-color: #ffffff;
+            box-shadow:0 0 1em gray;
+            border-radius: 10px;
+        }
+        fieldset{
+            padding: 20px;
+            line-height: 2.5;
+            border: none;
+        }
+        input{
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 25px;
+            outline:0px solid black;
+            border-radius: 5px;
+            border: 1px solid black;
+        }
+        button{
+            padding: 10px 15px;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            font-family: sans-serif;
+            font-weight: 700;
+            color: #fff;
+        }
+        a{
+            text-decoration: none;
+        }
+        #emerror{
+            font-size:10px;
+            color:red;
+            position: absolute;
+            top: 11.7rem;
+            left: 51rem;
+        }
+        #numerror{
+            font-size:10px;
+            color:red;
+            position: absolute;
+            top: 15.7rem;
+            left: 51rem;
+        }
+        #passerror{
+            font-size:10px;
+            color:green;
+            position: absolute;
+            top: 19.7rem;
+            left: 51rem;
+        }
+</style>
+</head>
+<body>
+    <section>
+        <div class="First">
+            <h1>facebook</h1><br>
+          <p>  Facebook helps you connect and share <br> with the people in your life.</p>
+           
+        </div>
+
+        <div class="second"> 
+            <fieldset>
+                <input type="email" placeholder="email"  id="input1" name="email">
+                <p id="emailerror"></p>
+                <input type="phone number" placeholder="Phone number"  id="input2" name="phone">
+                <p id="phoneerror"></p>
+                <input type="password" placeholder="password" id="input3"  name="password"><br>
+                <p id="passworderror"></p>
+                <button style="background-color:blue; " onclick="save()">Login In</button><br>
+                <a href="#">Forgotten password?</a><br>
+                <button style="background-color: green; width: 60%; padding: 15px;">Create account </button>
+            </fieldset>
+        </div>
+    </section>
+
+</body>
+    <script>
+        let email = document.getElementById('input1')
+        let number = document.getElementById('input2') 
+        let password = document.getElementById('input3')
+        function save(){
+            const userinfo ={
+                email: email.value,
+                number: number.value,
+                password: password.value
+            }
+            localStorage.setItem('userinfo', JSON.stringify(userinfo))
+        }
+        let patterns = {
+            email:/^[A-Za-z0-9_]+[@]{1}[A-Za-z0-9_]+[\.]{1}[A-Za-z0-9_]+$/,
+            phone: /^(\+234||\+2340||0)[789][01][0-9]{8}$/,
+            password:/^[A-Z]+[A-Za-z0-9#$_!@%^*]{8,}$/
+        }
+        document.querySelectorAll('input').forEach(function(element, index){
+                element.addEventListener('input',validate)
+            })
+        function validate(event){
+            console.log(event.data)
+            if (!patterns[event.target.name].test(event.target.value)) {
+                document.getElementById(event.target.name+'error').innerHTML=`invalid ${event.target.name}`
+                event.target.style.border = '1px solid red'
+            }else{
+                document.getElementById(event.target.name+'error').innerHTML=''
+            }
+            
+        }
+    </script>
+</html>
