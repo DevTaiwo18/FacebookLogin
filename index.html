@@ -3,147 +3,362 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Facebook</title>
- 
-<style>
-        *{
-            margin: 0%;
-            padding: 0%;
+    <title>Facebook - Log In or Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
-       
-        body{
-            background-color: rgb(240, 242, 245);
-        }
-        section{
-            width: 80%;
-            margin: auto;
-            margin-top: 130px;
+        
+        body {
+            background-color: #f0f2f5;
+            height: 100vh;
             display: flex;
-            justify-content:space-between;
             align-items: center;
+            justify-content: center;
         }
-        h1{
-            color: blue;
-            font-weight: 700;
-            font-size: 64px;
-            font-family: sans-serif;
-        }
-        p{
-            font-size:24px;
-            color: black;
-            font-family: sans-serif;
-            font-weight: 400;
-        }
-        .second{
-            text-align: center;
-            width: 40%;
-            background-color: #ffffff;
-            box-shadow:0 0 1em gray;
-            border-radius: 10px;
-        }
-        fieldset{
-            padding: 20px;
-            line-height: 2.5;
-            border: none;
-        }
-        input{
-            padding: 10px;
+        
+        .container {
             width: 100%;
-            margin-bottom: 25px;
-            outline:0px solid black;
-            border-radius: 5px;
-            border: 1px solid black;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
         }
-        button{
-            padding: 10px 15px;
-            width: 100%;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-            font-family: sans-serif;
+        
+        .left-section {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .logo {
+            color: #1877f2;
+            font-size: 56px;
             font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .tagline {
+            font-size: 28px;
+            line-height: 32px;
+            width: 100%;
+            color: #1c1e21;
+        }
+        
+        .login-section {
+            flex: 1;
+            max-width: 396px;
+        }
+        
+        .login-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+            padding: 20px 16px 28px;
+        }
+        
+        .form-group {
+            margin-bottom: 16px;
+            position: relative;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 17px;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            outline: none;
+            transition: all 0.2s;
+        }
+        
+        .input-field:focus {
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px #e7f3ff;
+        }
+        
+        .input-field.error {
+            border-color: #f02849;
+        }
+        
+        .error-message {
+            color: #f02849;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 20px;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #1877f2;
             color: #fff;
         }
-        a{
+        
+        .btn-primary:hover {
+            background-color: #166fe5;
+        }
+        
+        .btn-success {
+            background-color: #42b72a;
+            color: #fff;
+        }
+        
+        .btn-success:hover {
+            background-color: #36a420;
+        }
+        
+        .forgot-password {
+            margin: 16px 0;
+            text-align: center;
+        }
+        
+        .forgot-password a {
+            color: #1877f2;
+            font-size: 14px;
             text-decoration: none;
         }
-        #emerror{
-            font-size:10px;
-            color:red;
-            position: absolute;
-            top: 11.7rem;
-            left: 51rem;
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
         }
-        #numerror{
-            font-size:10px;
-            color:red;
-            position: absolute;
-            top: 15.7rem;
-            left: 51rem;
+        
+        .divider {
+            border-bottom: 1px solid #dadde1;
+            margin: 20px 0;
         }
-        #passerror{
-            font-size:10px;
-            color:green;
-            position: absolute;
-            top: 19.7rem;
-            left: 51rem;
+        
+        .create-account {
+            margin-top: 24px;
+            text-align: center;
         }
-</style>
-</head>
-<body>
-    <section>
-        <div class="First">
-            <h1>facebook</h1><br>
-          <p>  Facebook helps you connect and share <br> with the people in your life.</p>
-           
-        </div>
-
-        <div class="second"> 
-            <fieldset>
-                <input type="email" placeholder="email"  id="input1" name="email">
-                <p id="emailerror"></p>
-                <input type="phone number" placeholder="Phone number"  id="input2" name="phone">
-                <p id="phoneerror"></p>
-                <input type="password" placeholder="password" id="input3"  name="password"><br>
-                <p id="passworderror"></p>
-                <button style="background-color:blue; " onclick="save()">Login In</button><br>
-                <a href="#">Forgotten password?</a><br>
-                <button style="background-color: green; width: 60%; padding: 15px;">Create account </button>
-            </fieldset>
-        </div>
-    </section>
-
-</body>
-    <script>
-        let email = document.getElementById('input1')
-        let number = document.getElementById('input2') 
-        let password = document.getElementById('input3')
-        function save(){
-            const userinfo ={
-                email: email.value,
-                number: number.value,
-                password: password.value
-            }
-            localStorage.setItem('userinfo', JSON.stringify(userinfo))
+        
+        .success-message {
+            color: #42b72a;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
         }
-        let patterns = {
-            email:/^[A-Za-z0-9_]+[@]{1}[A-Za-z0-9_]+[\.]{1}[A-Za-z0-9_]+$/,
-            phone: /^(\+234||\+2340||0)[789][01][0-9]{8}$/,
-            password:/^[A-Z]+[A-Za-z0-9#$_!@%^*]{8,}$/
+        
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 14px;
+            color: #737373;
         }
-        document.querySelectorAll('input').forEach(function(element, index){
-                element.addEventListener('input',validate)
-            })
-        function validate(event){
-            console.log(event.data)
-            if (!patterns[event.target.name].test(event.target.value)) {
-                document.getElementById(event.target.name+'error').innerHTML=`invalid ${event.target.name}`
-                event.target.style.border = '1px solid red'
-            }else{
-                document.getElementById(event.target.name+'error').innerHTML=''
+        
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin-top: 0;
+                padding-top: 40px;
+                padding-bottom: 40px;
+                height: auto;
             }
             
+            .left-section {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+            
+            .login-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1 class="logo">facebook</h1>
+            <p class="tagline">Connect with friends and the world around you on Facebook.</p>
+        </div>
+        
+        <div class="login-section">
+            <div class="login-container">
+                <form id="login-form">
+                    <div class="form-group">
+                        <input type="text" id="email" name="email" class="input-field" placeholder="Email or phone number">
+                        <div id="email-error" class="error-message"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" id="password" name="password" class="input-field" placeholder="Password">
+                        <div id="password-error" class="error-message"></div>
+                        <div id="password-success" class="success-message"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    
+                    <div class="forgot-password">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    
+                    <div class="create-account">
+                        <button type="button" class="btn btn-success" style="width: auto; padding: 12px 16px; font-size: 17px;">Create new account</button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="footer">
+                <p><strong>Create a Page</strong> for a celebrity, brand or business.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form elements
+        const loginForm = document.getElementById('login-form');
+        const emailField = document.getElementById('email');
+        const passwordField = document.getElementById('password');
+        
+        // Error/success display elements
+        const emailError = document.getElementById('email-error');
+        const passwordError = document.getElementById('password-error');
+        const passwordSuccess = document.getElementById('password-success');
+        
+        // Validation patterns
+        const patterns = {
+            email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            phone: /^(\+?234|0)[789][01]\d{8}$/,
+            password: /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/
+        };
+        
+        // Validate email/phone
+        emailField.addEventListener('input', function() {
+            validateEmailOrPhone(this.value);
+        });
+        
+        // Validate password
+        passwordField.addEventListener('input', function() {
+            validatePassword(this.value);
+        });
+        
+        // Form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate all fields
+            const emailValid = validateEmailOrPhone(emailField.value);
+            const passwordValid = validatePassword(passwordField.value);
+            
+            // If all validations pass
+            if (emailValid && passwordValid) {
+                saveUserData();
+                
+                // Show success notification
+                alert('Login successful!');
+                
+                // Clear form
+                loginForm.reset();
+                emailField.classList.remove('error');
+                passwordField.classList.remove('error');
+                emailError.style.display = 'none';
+                passwordError.style.display = 'none';
+                passwordSuccess.style.display = 'none';
+            }
+        });
+        
+        // Validate email or phone
+        function validateEmailOrPhone(value) {
+            if (!value) {
+                showError(emailField, emailError, 'Email or phone number is required');
+                return false;
+            }
+            
+            // Check if input is an email or phone number
+            const isEmail = value.includes('@');
+            
+            if (isEmail) {
+                if (!patterns.email.test(value)) {
+                    showError(emailField, emailError, 'Please enter a valid email address');
+                    return false;
+                }
+            } else {
+                if (!patterns.phone.test(value)) {
+                    showError(emailField, emailError, 'Please enter a valid Nigerian phone number');
+                    return false;
+                }
+            }
+            
+            // Valid input
+            hideError(emailField, emailError);
+            return true;
+        }
+        
+        // Validate password
+        function validatePassword(value) {
+            if (!value) {
+                showError(passwordField, passwordError, 'Password is required');
+                passwordSuccess.style.display = 'none';
+                return false;
+            }
+            
+            if (!patterns.password.test(value)) {
+                let message = 'Password must:';
+                message += '<ul style="margin-top: 4px; margin-left: 16px;">';
+                message += '<li>Be at least 8 characters long</li>';
+                message += '<li>Include at least one uppercase letter</li>';
+                message += '<li>Include at least one lowercase letter</li>';
+                message += '<li>Include at least one number</li>';
+                message += '<li>Include at least one special character</li>';
+                message += '</ul>';
+                
+                showError(passwordField, passwordError, message);
+                passwordSuccess.style.display = 'none';
+                return false;
+            }
+            
+            // Valid password
+            hideError(passwordField, passwordError);
+            passwordSuccess.textContent = 'Strong password!';
+            passwordSuccess.style.display = 'block';
+            return true;
+        }
+        
+        // Save user data to localStorage
+        function saveUserData() {
+            const userData = {
+                email: emailField.value,
+                password: passwordField.value,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('userData', JSON.stringify(userData));
+        }
+        
+        // Show error
+        function showError(field, errorElement, message) {
+            field.classList.add('error');
+            errorElement.innerHTML = message;
+            errorElement.style.display = 'block';
+        }
+        
+        // Hide error
+        function hideError(field, errorElement) {
+            field.classList.remove('error');
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
         }
     </script>
+</body>
 </html>
